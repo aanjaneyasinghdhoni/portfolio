@@ -1,0 +1,95 @@
+---
+import Nav           from '../components/Nav.astro';
+import Hero          from '../components/Hero.astro';
+import Stats         from '../components/Stats.astro';
+import About         from '../components/About.astro';
+import Experience    from '../components/Experience.astro';
+import Certifications from '../components/Certifications.astro';
+import Education     from '../components/Education.astro';
+import BugBounty     from '../components/BugBounty.astro';
+import Cyberhawk     from '../components/Cyberhawk.astro';
+import Skills        from '../components/Skills.astro';
+import Contact       from '../components/Contact.astro';
+
+import '../styles/global.css';
+import '../styles/reveal.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Aanjaneya Singh Dhoni — Cyber Security Consultant. Penetration Testing, Cloud Security, Zero Trust Architecture. PwC Frankfurt." />
+
+    <!-- Open Graph / LinkedIn / Twitter sharing -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:title"       content="Aanjaneya Singh Dhoni · Cyber Security Consultant" />
+    <meta property="og:description" content="5+ years in VAPT, Cloud Security & Zero Trust. PwC Frankfurt. Bug Bounty HOF: Netflix, Kubernetes, Zmarta Bank." />
+    <meta name="twitter:card"       content="summary" />
+    <meta name="twitter:title"      content="Aanjaneya Singh Dhoni · Cyber Security Consultant" />
+    <meta name="twitter:description" content="5+ years in VAPT, Cloud Security & Zero Trust. PwC Frankfurt. Bug Bounty HOF: Netflix, Kubernetes, Zmarta Bank." />
+
+    <title>Aanjaneya Singh Dhoni · Cyber Security Consultant</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Fonts — preconnect first for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" />
+  <!-- Flicker-free theme init: runs before paint -->
+  <script is:inline>
+    (function() {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (stored === 'light' || (!stored && !prefersDark)) {
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <Nav />
+    <main id="main-content">
+      <Hero />
+      <Stats />
+      <About />
+      <Experience />
+      <Certifications />
+      <Education />
+      <BugBounty />
+      <Cyberhawk />
+      <Skills />
+      <Contact />
+    </main>
+  </body>
+</html>
+
+<script>
+  // ── Scroll Reveal via IntersectionObserver ──────────────────
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target); // fire once
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('[data-reveal], [data-reveal-stagger]').forEach(el => {
+      observer.observe(el);
+    });
+  } else {
+    // Instantly show all for reduced-motion users
+    document.querySelectorAll('[data-reveal], [data-reveal-stagger]').forEach(el => {
+      el.classList.add('revealed');
+    });
+  }
+</script>

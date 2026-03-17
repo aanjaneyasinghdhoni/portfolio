@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Not Found · Aanjaneya Singh Dhoni</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" />
+  </head>
+  <body class="error-body">
+    <div class="error-wrap">
+      <p class="error-label mono">// error · 404</p>
+      <h1 class="error-code">404</h1>
+      <p class="error-msg mono">Target not found. The page you're looking for doesn't exist.</p>
+      <a href="/" class="btn-back mono">← Return to base</a>
+    </div>
+  </body>
+</html>
+
+<style>
+.error-body {
+  background: var(--bg-void);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-wrap {
+  text-align: center;
+  padding: 2rem;
+}
+
+.error-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.error-code {
+  font-family: var(--font-hero);
+  font-size: clamp(6rem, 20vw, 14rem);
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 60px rgba(240,180,41,0.15);
+}
+
+.error-msg {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 2.5rem;
+}
+
+.btn-back {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  text-decoration: none;
+  transition: all 0.2s;
+  background: transparent;
+}
+
+.btn-back:hover {
+  background: rgba(240, 180, 41, 0.1);
+  border-color: var(--gold);
+}
+</style>

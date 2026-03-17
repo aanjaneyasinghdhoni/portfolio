@@ -1,0 +1,169 @@
+---
+const skillGroups = [
+  {
+    category: "Offensive Security",
+    icon: "⬡",
+    skills: ["Penetration Testing (VAPT)", "OWASP Top 10", "Kali Linux", "Burp Suite", "Nmap", "Nessus", "Ethical Hacking"],
+  },
+  {
+    category: "Cloud Security",
+    icon: "⬡",
+    skills: ["AWS Security", "Azure Security", "Zero Trust Architecture", "IAM Policy", "CIS Benchmarks", "NIST Compliance", "Multi-cloud"],
+  },
+  {
+    category: "Engineering",
+    icon: "⬡",
+    skills: ["Python", "Linux / Bash", "C++", "GPO / Active Directory", "Azure Logic Apps", "API Management", "GenAI Automation"],
+  },
+  {
+    category: "Strategy & Leadership",
+    icon: "⬡",
+    skills: ["CISO Advisory", "Cyber Transformation", "Threat Intelligence", "Board Reporting", "Team Mentoring", "Content Strategy"],
+  },
+];
+
+---
+
+<section class="skills" id="skills" data-reveal>
+  <div class="container">
+    <p class="section-label">// capabilities · cleared for deployment</p>
+    <h2 class="section-title">SKILLS</h2>
+
+    <div class="skills-grid">
+      {skillGroups.map((group) => (
+        <div class="skill-group">
+          <h3 class="group-title mono">
+            <span class="gold">{group.icon}</span>
+            {group.category}
+          </h3>
+          <ul class="skill-list">
+            {group.skills.map((s) => (
+              <li class="skill-pill">{s}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="languages-row">
+      <p class="section-label" style="margin-bottom: 1rem">// languages</p>
+      <div class="lang-list">
+        {[
+          { lang: "English", level: 5 },
+          { lang: "Hindi",   level: 5 },
+          { lang: "German",  level: 2 },
+        ].map(({ lang, level }) => (
+          <div class="lang-item">
+            <span class="lang-name mono">{lang}</span>
+            <div class="lang-dots">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <span class={`lang-dot ${i < level ? 'filled' : ''}`}></span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.skills {
+  padding: 6rem 0;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+}
+
+/* ── Skill Groups ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.skill-group {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+}
+
+.group-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  transition: all 0.2s;
+}
+
+.skill-pill:hover {
+  border-color: var(--gold-dim);
+  color: var(--gold);
+}
+
+/* ── Languages ── */
+.lang-list {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.lang-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lang-name {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.lang-dots {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.lang-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-dim);
+  background: transparent;
+}
+
+.lang-dot.filled {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 6px rgba(240,180,41,0.4);
+}
+
+@media (max-width: 768px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .skills-grid { gap: 1rem; }
+}
+</style>

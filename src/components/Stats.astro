@@ -1,0 +1,95 @@
+---
+const stats = [
+  { value: "5+",    label: "Years Experience" },
+  { value: "F500",  label: "Fortune 500 Clients" },
+  { value: "3",     label: "Bug Bounty HOFs" },
+  { value: "100K+", label: "Community Built" },
+];
+---
+
+<section class="stats-bar" data-reveal-stagger>
+  <div class="container">
+    <ul class="stats-grid">
+      {stats.map((s) => (
+        <li class="stat-item">
+          <span class="stat-value mono">{s.value}</span>
+          <span class="stat-label mono">{s.label}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+.stats-bar {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 2.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-bar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  list-style: none;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: center;
+  flex: 1;
+  min-width: 100px;
+  position: relative;
+}
+
+.stat-item + .stat-item::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60%;
+  background: var(--border);
+}
+
+.stat-value {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(240,180,41,0.4);
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+@media (max-width: 640px) {
+  .stats-grid { justify-content: center; }
+  .stat-item + .stat-item::before { display: none; }
+  .stat-item + .stat-item {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    margin-top: 0;
+  }
+}
+</style>

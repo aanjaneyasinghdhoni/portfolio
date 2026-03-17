@@ -1,0 +1,154 @@
+---
+const degrees = [
+  {
+    degree: "Master of Engineering — Entrepreneurial Cybersecurity",
+    school: "Saarland University",
+    location: "Saarbrücken, Germany",
+    period: "10/2021 – Present",
+    current: true,
+    detail: "Bridging deep technical security expertise with entrepreneurial strategy and business leadership.",
+  },
+  {
+    degree: "Bachelor of Technology",
+    school: "Poornima University",
+    location: "Jaipur, India",
+    period: "08/2016 – 07/2020",
+    current: false,
+    detail: "Foundation in computer science, networks, and software engineering.",
+  },
+];
+---
+
+<section class="education" id="education" data-reveal>
+  <div class="container">
+    <p class="section-label">// academic record</p>
+    <h2 class="section-title">EDUCATION</h2>
+
+    <div class="edu-grid">
+      {degrees.map((d) => (
+        <div class={`edu-card ${d.current ? 'current' : ''}`} data-reveal>
+          <div class="edu-header">
+            <div class="edu-marker">
+              <span class={`edu-dot ${d.current ? 'active' : ''}`}></span>
+            </div>
+            <div class="edu-meta">
+              <span class="edu-period mono">{d.period}</span>
+              {d.current && <span class="edu-badge mono">In Progress</span>}
+            </div>
+          </div>
+          <h3 class="edu-degree">{d.degree}</h3>
+          <p class="edu-school mono">
+            {d.school}
+            <span class="edu-location"> · {d.location}</span>
+          </p>
+          <p class="edu-detail">{d.detail}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.education {
+  padding: 6rem 0;
+  background: var(--bg-void);
+  border-top: 1px solid var(--border);
+}
+
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.edu-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+
+.edu-card:hover {
+  border-color: var(--gold-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(240, 180, 41, 0.08);
+}
+
+.edu-card.current {
+  border-color: rgba(240, 180, 41, 0.2);
+  background: linear-gradient(135deg, var(--bg-surface), rgba(240, 180, 41, 0.02));
+}
+
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.edu-marker { display: flex; align-items: center; }
+
+.edu-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-dim);
+  background: transparent;
+}
+
+.edu-dot.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(240, 180, 41, 0.5);
+}
+
+.edu-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.edu-period {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.edu-badge {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  background: rgba(240, 180, 41, 0.06);
+}
+
+.edu-degree {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin-bottom: 0.4rem;
+}
+
+.edu-school {
+  font-size: 0.75rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.edu-location { color: var(--text-muted); }
+
+.edu-detail {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+@media (max-width: 640px) {
+  .edu-grid { grid-template-columns: 1fr; }
+}
+</style>

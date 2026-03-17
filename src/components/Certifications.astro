@@ -1,0 +1,101 @@
+---
+const certGroups = [
+  {
+    vendor: "Microsoft",
+    certs: [
+      "SC-200 · Security Operations Analyst",
+      "SC-900 · Security, Compliance & Identity",
+      "AI-102 · Azure AI Engineer Associate",
+      "AI-900 · Azure AI Fundamentals",
+      "AZ-900 · Azure Fundamentals",
+    ],
+  },
+  {
+    vendor: "Amazon Web Services",
+    certs: [
+      "AWS Security – Specialty",
+      "AWS Solutions Architect – Associate",
+    ],
+  },
+  {
+    vendor: "NPTEL",
+    certs: [
+      "Information Security IV",
+      "Cloud Computing",
+      "Introduction to Machine Learning",
+    ],
+  },
+];
+---
+
+<section class="certs" id="certifications" data-reveal>
+  <div class="container">
+    <p class="section-label">// verified credentials</p>
+    <h2 class="section-title">CERTIFICATIONS</h2>
+
+    <div class="cert-grid">
+      {certGroups.map((group) => (
+        <div class="cert-group">
+          <h3 class="cert-vendor mono">{group.vendor}</h3>
+          <ul class="cert-list">
+            {group.certs.map((c) => (
+              <li class="cert-item mono">
+                <span class="cert-bullet gold">▸</span>
+                {c}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.certs {
+  padding: 6rem 0;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.cert-vendor {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cert-list { list-style: none; }
+
+.cert-item {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--text-dim);
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  transition: color 0.2s;
+}
+
+.cert-item:hover { color: var(--text-primary); }
+
+.cert-bullet { flex-shrink: 0; font-size: 0.6rem; margin-top: 0.2rem; }
+
+@media (max-width: 900px) {
+  .cert-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .cert-grid { grid-template-columns: 1fr; }
+}
+</style>

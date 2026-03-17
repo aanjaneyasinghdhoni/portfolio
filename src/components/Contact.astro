@@ -1,0 +1,205 @@
+---
+---
+<section class="contact" id="contact" data-reveal>
+  <div class="container">
+    <p class="section-label">// establish connection</p>
+    <h2 class="section-title">CONTACT</h2>
+
+    <div class="contact-grid">
+      <div class="contact-text">
+        <p class="contact-body">
+          Available for consulting engagements, speaking opportunities,
+          and security advisory roles. Currently based in Frankfurt, Germany.
+        </p>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/aanjaneyasinghdhoni/" target="_blank" rel="noopener" class="contact-item">
+            <span class="contact-icon mono">→</span>
+            <div>
+              <span class="contact-label mono">LinkedIn</span>
+              <span class="contact-value">/in/aanjaneyasinghdhoni</span>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/@CyberhawkSecurity" target="_blank" rel="noopener" class="contact-item">
+            <span class="contact-icon mono">→</span>
+            <div>
+              <span class="contact-label mono">Cyberhawk Security</span>
+              <span class="contact-value">YouTube · 100K+ Community</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-terminal" role="img" aria-label="Terminal interface showing online status and contact information">
+        <div class="term-header">
+          <span class="led-red"></span>
+          <span class="led-amber"></span>
+          <span class="led-green"></span>
+          <span class="term-title mono">secure_channel.sh</span>
+        </div>
+        <div class="term-body mono">
+          <p><span class="t-prompt">$</span> <span class="t-cmd">ping</span> aanjaneya.dhoni</p>
+          <p class="t-out">PING aanjaneya.dhoni: 56 data bytes</p>
+          <p class="t-out">64 bytes: icmp_seq=0 ttl=64 time=0.3ms</p>
+          <p class="t-out t-gold">Reply: ONLINE — responding</p>
+          <p>&nbsp;</p>
+          <p><span class="t-prompt">$</span> <span class="t-cmd">whois</span> aanjaneya.dhoni</p>
+          <p class="t-out">Base:     Frankfurt, DE / Saarbrücken</p>
+          <p class="t-out">Status:   Open to opportunities</p>
+          <p>&nbsp;</p>
+          <p><span class="t-prompt">$</span> <span class="cursor-blink">_</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <p class="mono footer-text">
+      © 2025 Aanjaneya Singh Dhoni
+      <span class="sep">·</span>
+      Cyber Security Consultant
+      <span class="sep">·</span>
+      Frankfurt, Germany
+    </p>
+  </div>
+</section>
+
+<style>
+.contact {
+  padding: 6rem 0 0;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 4rem;
+  align-items: start;
+  padding-bottom: 4rem;
+}
+
+.contact-body {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  transition: all 0.2s;
+}
+
+.contact-item:hover {
+  border-color: var(--gold-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(240, 180, 41, 0.08);
+}
+
+.contact-icon {
+  color: var(--gold);
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.contact-item:hover .contact-icon {
+  transform: translateX(4px);
+}
+
+.contact-label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.contact-value {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+/* ── Terminal ── */
+.contact-terminal {
+  background: var(--bg-void);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.term-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+}
+
+.led-red   { width: 8px; height: 8px; border-radius: 50%; background: #ff5f57; }
+.led-amber { width: 8px; height: 8px; border-radius: 50%; background: #febc2e; }
+.led-green { width: 8px; height: 8px; border-radius: 50%; background: #28c840; }
+
+.term-title {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-left: 0.5rem;
+}
+
+.term-body {
+  padding: 1.25rem;
+  font-size: 0.78rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.t-prompt { color: var(--gold); margin-right: 0.5rem; }
+.t-cmd    { color: var(--electric); }
+.t-out    { padding-left: 1.2rem; color: var(--text-muted); }
+.t-gold   { color: var(--gold) !important; }
+
+.cursor-blink {
+  color: var(--gold);
+  animation: blink 1s step-end infinite;
+}
+
+/* ── Footer ── */
+.footer-bar {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.footer-text .sep {
+  margin: 0 0.75rem;
+  color: var(--text-dim);
+}
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 640px) {
+  .contact-grid { gap: 1.5rem; }
+}
+</style>

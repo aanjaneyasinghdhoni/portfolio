@@ -1,0 +1,176 @@
+---
+const hofs = [
+  {
+    org: "Netflix",
+    type: "Entertainment Platform",
+    detail: "Vulnerability responsibly disclosed & acknowledged",
+    tier: "CRITICAL",
+  },
+  {
+    org: "Kubernetes",
+    type: "Cloud Infrastructure",
+    detail: "Security finding in open-source orchestration platform",
+    tier: "HIGH",
+  },
+  {
+    org: "Zmarta Bank",
+    type: "Financial Institution",
+    detail: "Financial sector security disclosure",
+    tier: "HIGH",
+  },
+];
+---
+
+<section class="bounty" id="bounty" data-reveal>
+  <div class="container">
+    <p class="section-label">// threat intelligence · validated findings</p>
+    <h2 class="section-title">BUG BOUNTY<br/><span class="gold">HALL OF FAME</span></h2>
+
+    <p class="bounty-intro mono">
+      Responsibly disclosed critical vulnerabilities to globally recognized organizations.
+    </p>
+
+    <div class="hof-grid">
+      {hofs.map((h) => (
+        <div class="hof-card">
+          <div class="hof-tier mono">
+            <span class="tier-dot"></span>
+            {h.tier}
+          </div>
+          <h3 class="hof-org">{h.org}</h3>
+          <p class="hof-type mono">{h.type}</p>
+          <p class="hof-detail">{h.detail}</p>
+          <div class="hof-badge">
+            <span class="shield-icon" aria-hidden="true">◈</span>
+            Hall of Fame
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.bounty {
+  padding: 6rem 0;
+  background: var(--bg-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dramatic background glow */
+.bounty::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(240,180,41,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.bounty-intro {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 3rem;
+  margin-top: -1.5rem;
+}
+
+/* ── HOF Grid ── */
+.hof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.hof-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+}
+
+.hof-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(240,180,41,0.05), transparent);
+  pointer-events: none;
+}
+
+.hof-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold-dim);
+  box-shadow: 0 8px 24px rgba(240, 180, 41, 0.1);
+}
+
+.hof-tier {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--crimson);
+  margin-bottom: 1.5rem;
+}
+
+.tier-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--crimson);
+  box-shadow: 0 0 6px var(--crimson);
+}
+
+.hof-org {
+  font-family: var(--font-hero);
+  font-size: 2.5rem;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+
+.hof-type {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.hof-detail {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.hof-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  padding: 0.25rem 0.75rem;
+  background: rgba(240,180,41,0.06);
+}
+
+.shield-icon {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .hof-grid { grid-template-columns: 1fr; }
+}
+</style>

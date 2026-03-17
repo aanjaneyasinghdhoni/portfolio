@@ -1,0 +1,241 @@
+---
+const jobs = [
+  {
+    title: "Cloud Security & Data Privacy Consultant",
+    company: "PricewaterhouseCoopers (PwC)",
+    location: "Frankfurt, Germany",
+    period: "05/2022 – Present",
+    current: true,
+    highlights: [
+      "Architected Zero Trust security roadmaps across IT/OT for Fortune 500 clients",
+      "Directed AWS Security Baseline (CIS Benchmarks + IAM) for a global wholesale retailer",
+      "Advised CISO of a global chemical manufacturer on Cyber Transformation strategy",
+      "Engineered multi-cloud CLI framework across AWS, Azure, GCP, and Oracle",
+      "Led internal GenAI automation using Microsoft Copilot and Azure OpenAI",
+    ],
+  },
+  {
+    title: "Assistant System Engineer",
+    company: "Tata Consultancy Services (TCS)",
+    location: "New Delhi, India",
+    period: "08/2020 – 09/2021",
+    current: false,
+    highlights: [
+      "Administered Windows Active Directory for 40,000+ endpoints globally",
+      "Architected GPO deployment of firewall rules, SSH permissions, and Windows Updates",
+      "Engineered GPO-driven automation for endpoint commissioning and decommissioning",
+    ],
+  },
+  {
+    title: "Associate Cloud Engineer",
+    company: "Celebal Technologies",
+    location: "Jaipur, India",
+    period: "07/2019 – 04/2020",
+    current: false,
+    highlights: [
+      "Deployed Azure Logic Apps and APIM gateways with OAuth 2.0 and rate limiting",
+      "Configured Azure Firewall and WAF policies for enterprise IaaS workloads",
+    ],
+  },
+  {
+    title: "Cybersecurity Community Co-Founder / Trainer",
+    company: "Cyberhawk Security",
+    location: "Jaipur, India",
+    period: "04/2018 – 08/2021",
+    current: false,
+    highlights: [
+      "Founded multi-platform brand to 100,000+ followers within 3 years",
+      "Designed and delivered Ethical Hacking & WAPT course — 200+ students globally",
+      "Produced cybersecurity podcast series on YouTube featuring domain expert interviews",
+    ],
+  },
+  {
+    title: "Information Security Researcher",
+    company: "Council of Scientific and Industrial Research (CSIR)",
+    location: "New Delhi, India",
+    period: "11/2018 – 02/2019",
+    current: false,
+    highlights: [
+      "Identified 10+ critical OWASP Top 10 vulnerabilities on live government R&D infrastructure",
+      "Leveraged Kali Linux, Burp Suite, Nmap, and Nessus across a full 5-phase engagement",
+      "Delivered comprehensive VAPT report enabling remediation of 8 critical attack vectors",
+    ],
+  },
+];
+---
+
+<section class="experience" id="experience" data-reveal>
+  <div class="container">
+    <p class="section-label">// field record</p>
+    <h2 class="section-title">EXPERIENCE</h2>
+
+    <div class="timeline">
+      {jobs.map((job, i) => (
+        <div class={`timeline-item ${job.current ? 'current' : ''}`}>
+          <div class="timeline-node">
+            <div class="node-dot"></div>
+            {i < jobs.length - 1 && <div class="node-line"></div>}
+          </div>
+
+          <div class="timeline-card">
+            <div class="card-header">
+              <div>
+                <h3 class="job-title">{job.title}</h3>
+                <p class="job-company mono">
+                  {job.company}
+                  <span class="job-location"> · {job.location}</span>
+                </p>
+              </div>
+              <span class={`job-period mono ${job.current ? 'period-current' : ''}`}>
+                {job.period}
+              </span>
+            </div>
+
+            <ul class="job-highlights">
+              {job.highlights.map((h) => (
+                <li>
+                  <span class="bullet gold">▸</span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.experience {
+  padding: 6rem 0;
+  background: var(--bg-void);
+}
+
+.timeline {
+  position: relative;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ── Node ── */
+.timeline-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.4rem;
+}
+
+.node-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-void);
+  border: 2px solid var(--gold-dim);
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.current .node-dot {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(240,180,41,0.5);
+}
+
+.node-line {
+  width: 1px;
+  flex: 1;
+  background: linear-gradient(180deg, var(--gold-dim), transparent);
+  margin-top: 0.5rem;
+  min-height: 40px;
+}
+
+/* ── Card ── */
+.timeline-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.timeline-card:hover {
+  border-color: var(--gold-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(240, 180, 41, 0.08);
+}
+
+.current .timeline-card {
+  border-color: rgba(240,180,41,0.25);
+  background: linear-gradient(135deg, var(--bg-surface), rgba(240,180,41,0.03));
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.job-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.job-company {
+  font-size: 0.75rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.05em;
+}
+
+.job-location {
+  color: var(--text-muted);
+}
+
+.job-period {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.period-current {
+  color: var(--gold);
+}
+
+/* ── Highlights ── */
+.job-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.job-highlights li {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.bullet {
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+  font-size: 0.7rem;
+}
+
+@media (max-width: 640px) {
+  .card-header { flex-direction: column; }
+  .job-period { align-self: flex-start; }
+}
+</style>

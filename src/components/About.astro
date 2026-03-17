@@ -1,0 +1,163 @@
+---
+---
+<section class="about" id="about" data-reveal>
+  <div class="container">
+    <p class="section-label">// about</p>
+    <div class="about-grid">
+
+      <div class="about-text">
+        <h2 class="section-title">THE OPERATIVE</h2>
+        <p class="about-body">
+          5+ years in VAPT, Cloud Security, and Zero Trust Architecture. Currently at
+          <span class="gold">PwC Frankfurt</span> delivering enterprise security for Fortune 500 clients.
+          M.S. Entrepreneurial Cybersecurity at <span class="gold">Saarland University</span>.
+          Bug Bounty HOF — Netflix, Kubernetes, Zmarta Bank.
+          Founder of <span class="gold">Cyberhawk Security</span> · 100K+ community · 200+ students trained.
+        </p>
+
+        <div class="about-tags">
+          <span class="tag">Penetration Testing</span>
+          <span class="tag">Zero Trust Architecture</span>
+          <span class="tag">Cloud Security</span>
+          <span class="tag">AI-Driven Automation</span>
+          <span class="tag">NIST / CIS Compliance</span>
+          <span class="tag">OWASP Top 10</span>
+        </div>
+      </div>
+
+      <div class="about-panel">
+        <div class="panel-card">
+          <div class="panel-header mono">
+            <span class="led-red"></span>
+            <span class="led-amber"></span>
+            <span class="led-green"></span>
+            <span class="panel-title">operative.profile</span>
+          </div>
+          <ul class="profile-lines mono">
+            <li><span class="key">role</span><span class="sep">::</span><span class="val">Cloud Security Consultant</span></li>
+            <li><span class="key">employer</span><span class="sep">::</span><span class="val gold">PwC Frankfurt</span></li>
+            <li><span class="key">base</span><span class="sep">::</span><span class="val">Saarbrücken, Germany</span></li>
+            <li><span class="key">focus</span><span class="sep">::</span><span class="val">VAPT · Cloud · ZTA</span></li>
+            <li><span class="key">education</span><span class="sep">::</span><span class="val">M.S. Cybersecurity</span></li>
+            <li><span class="key">languages</span><span class="sep">::</span><span class="val">EN · HI · DE</span></li>
+            <li><span class="key">status</span><span class="sep">::</span><span class="val"><span class="status-dot"></span> Available</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.about {
+  padding: 6rem 0;
+  background: var(--bg-void);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-body {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  transition: all 0.2s;
+}
+
+.tag:hover {
+  border-color: var(--gold-dim);
+  color: var(--gold);
+}
+
+/* ── Panel card ── */
+.panel-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.led-red, .led-amber, .led-green {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.led-red   { background: #ff5f57; }
+.led-amber { background: #febc2e; }
+.led-green { background: #28c840; }
+
+.panel-title { margin-left: 0.5rem; }
+
+.profile-lines {
+  list-style: none;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.profile-lines li {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.key  { color: var(--gold-dim); min-width: 80px; }
+.sep  { color: var(--text-dim); }
+.val  { color: var(--text-primary); }
+
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #28c840;
+  margin-right: 0.4rem;
+  animation: pulse-glow 2s infinite;
+  box-shadow: 0 0 6px #28c840;
+  vertical-align: middle;
+}
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 640px) {
+  .about-grid { gap: 1.5rem; }
+}
+</style>
