@@ -11,28 +11,28 @@
   <div class="grid-bg" aria-hidden="true"></div>
 
   <div class="container hero-content">
-    <div class="hero-tag mono">
+    <div class="hero-tag mono hero-entry">
       <span class="led"></span>
       Cloud Security &amp; Data Privacy Consultant · PwC Frankfurt
     </div>
 
-    <div class="hero-name-wrap">
+    <div class="hero-name-wrap hero-entry">
       <h1 class="hero-name" id="hero-name">AANJANEYA<br/>SINGH DHONI</h1>
       <h1 class="hero-name glitch-layer" aria-hidden="true">AANJANEYA<br/>SINGH DHONI</h1>
     </div>
 
-    <p class="hero-sub mono">
+    <p class="hero-sub mono hero-entry">
       <span class="gold">&gt;</span> Penetration Tester · Cloud Security · Zero Trust Architect
     </p>
 
-    <div class="hero-badges">
+    <div class="hero-badges hero-entry">
       <span class="badge badge-gold">Bug Bounty HOF</span>
       <span class="badge">Fortune 500</span>
       <span class="badge">5+ Years</span>
       <span class="badge">M.S. Cybersecurity</span>
     </div>
 
-    <div class="hero-actions">
+    <div class="hero-actions hero-entry">
       <a href="#experience" class="btn-primary">View Experience</a>
       <a href="#contact" class="btn-ghost">Get In Touch</a>
       <a href="/resume.pdf" download class="btn-ghost btn-download" aria-label="Download Resume PDF">
@@ -87,7 +87,11 @@
   position: relative;
   z-index: 2;
   padding-top: 80px;
-  animation: fadeUp 0.8s ease both;
+}
+
+/* Hidden before motion JS runs */
+.hero-entry {
+  opacity: 0;
 }
 
 /* ── Tag ── */
@@ -262,12 +266,26 @@
 </style>
 
 <script>
+  import { animate, stagger } from 'motion';
+
   const hero      = document.querySelector('.hero') as HTMLElement;
   const spotlight = document.getElementById('hero-spotlight') as HTMLElement;
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (!prefersReduced) {
+    // Staggered spring entrance — each hero element slides up in sequence
+    const heroEntries = hero.querySelectorAll('.hero-entry');
+    animate(
+      heroEntries,
+      { opacity: [0, 1], y: [32, 0] },
+      {
+        duration: 0.7,
+        delay: stagger(0.12, { start: 0.15 }),
+        easing: [0.22, 1, 0.36, 1],
+      }
+    );
+
     function moveSpotlight(x: number, y: number) {
       spotlight.style.setProperty('--x', `${x}%`);
       spotlight.style.setProperty('--y', `${y}%`);
@@ -297,6 +315,11 @@
 
     hero.addEventListener('touchend', () => {
       spotlight.classList.remove('visible');
+    });
+  } else {
+    // Reduced motion: show all hero entries immediately
+    hero.querySelectorAll('.hero-entry').forEach((el) => {
+      (el as HTMLElement).style.opacity = '1';
     });
   }
 </script>
