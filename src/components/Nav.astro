@@ -1,15 +1,19 @@
 ---
+const { pathname } = Astro.url;
+const onBlog = pathname.startsWith('/blog');
+const p = (hash: string) => onBlog ? `/${hash}` : hash;
 ---
 <nav role="navigation" aria-label="Main navigation">
   <div class="nav-inner container">
-    <a href="#home" class="nav-logo mono" aria-label="Back to top">ASD<span class="gold">_</span></a>
+    <a href="/" class="nav-logo mono" aria-label="Back to home">ASD<span class="gold">_</span></a>
 
     <ul class="nav-links" id="nav-links" role="list">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#bounty">Bug Bounty</a></li>
-      <li><a href="#cyberhawk">Cyberhawk</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href={p('#about')}    data-section="about">About</a></li>
+      <li><a href={p('#experience')} data-section="experience">Experience</a></li>
+      <li><a href={p('#bounty')}   data-section="bounty">Bug Bounty</a></li>
+      <li><a href={p('#cyberhawk')} data-section="cyberhawk">Cyberhawk</a></li>
+      <li><a href={p('#contact')}  data-section="contact">Contact</a></li>
+      <li><a href="/blog" class:list={[{ active: onBlog }]}>Writings</a></li>
     </ul>
 
     <div class="nav-right">
@@ -87,7 +91,8 @@ nav {
   transition: color 0.2s;
 }
 
-.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover,
+.nav-links a.active { color: var(--gold); }
 
 /* ── Nav right group ── */
 .nav-right {
@@ -206,6 +211,28 @@ html.light .icon-sun  { display: none; }
       toggle.setAttribute('aria-expanded', 'false');
     }
   });
+
+  // ── Scroll-based active section (homepage only) ───────────
+  const sectionLinks = document.querySelectorAll<HTMLAnchorElement>('[data-section]');
+  if (sectionLinks.length && window.location.pathname === '/') {
+    const sections = Array.from(sectionLinks).map(a => {
+      const id = a.getAttribute('data-section') as string;
+      return { a, el: document.getElementById(id) };
+    }).filter(s => s.el);
+
+    const onScroll = () => {
+      const mid = window.scrollY + window.innerHeight / 2;
+      let active = sections[0];
+      for (const s of sections) {
+        if (s.el!.offsetTop <= mid) active = s;
+      }
+      sectionLinks.forEach(a => a.classList.remove('active'));
+      active.a.classList.add('active');
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
 
   // ── Theme toggle ──────────────────────────────────────────
   const themeBtn = document.getElementById('theme-toggle') as HTMLButtonElement;

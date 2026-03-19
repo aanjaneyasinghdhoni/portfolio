@@ -1,0 +1,123 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import '../styles/prose.css';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags: string[];
+  readingTime?: string;
+}
+
+const { title, description, pubDate, tags, readingTime } = Astro.props;
+
+const formatted = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+const iso = pubDate.toISOString();
+---
+
+<BaseLayout title={`${title} · Aanjaneya Singh Dhoni`} description={description}>
+  <Nav />
+  <main id="main-content" class="post-main">
+    <div class="container">
+      <article>
+        <header class="post-header" data-reveal>
+          <p class="section-label">// writeup</p>
+          <h1 class="post-title">{title}</h1>
+          <div class="post-meta mono">
+            <time datetime={iso}>{formatted}</time>
+            {readingTime && <><span class="sep">·</span><span>{readingTime}</span></>}
+          </div>
+          {tags.length > 0 && (
+            <div class="post-tags">
+              {tags.map(tag => <span class="tag">{tag}</span>)}
+            </div>
+          )}
+          <hr class="gold-rule" />
+        </header>
+
+        <div class="prose" data-reveal>
+          <slot />
+        </div>
+      </article>
+
+      <div class="back-link" data-reveal>
+        <a href="/blog" class="btn-back">← Back to Writings</a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+.post-main {
+  padding-top: 100px;
+  padding-bottom: 6rem;
+  min-height: 100vh;
+}
+
+.post-header {
+  margin-bottom: 3rem;
+}
+
+.post-title {
+  font-family: var(--font-hero);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+
+.sep { color: var(--gold-dim); }
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--border);
+  padding: 0.2em 0.6em;
+  background: var(--bg-elevated);
+}
+
+.back-link {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.btn-back {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.btn-back:hover { color: var(--gold); }
+</style>
